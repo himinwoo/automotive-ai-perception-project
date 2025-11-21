@@ -19,9 +19,9 @@ def quick_test():
     os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
     
     print("\n1. Loading data...")
-    X_train = np.load(os.path.join(os.getcwd(), 'ref', 'X_train.npz'))['arr_0']
-    y_train = np.load(os.path.join(os.getcwd(), 'ref', 'y_train.npz'))['arr_0']
-    X_test = np.load(os.path.join(os.getcwd(), 'ref', 'X_test.npz'))['arr_0']
+    X_train = np.load(os.path.join('ref', 'X_train.npz'))['arr_0']
+    y_train = np.load(os.path.join('ref', 'y_train.npz'))['arr_0']
+    X_test = np.load(os.path.join('ref', 'X_test.npz'))['arr_0']
     print(f"   X_train: {X_train.shape}")
     print(f"   y_train: {y_train.shape}")
     print(f"   X_test: {X_test.shape}")

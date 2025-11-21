@@ -23,9 +23,9 @@ def test_data_loading():
     """Test that data files can be loaded."""
     print("\nTesting data loading...")
     try:
-        X_train = np.load(os.path.join(os.getcwd(), 'ref', 'X_train.npz'))['arr_0']
-        y_train = np.load(os.path.join(os.getcwd(), 'ref', 'y_train.npz'))['arr_0']
-        X_test = np.load(os.path.join(os.getcwd(), 'ref', 'X_test.npz'))['arr_0']
+        X_train = np.load(os.path.join('ref', 'X_train.npz'))['arr_0']
+        y_train = np.load(os.path.join('ref', 'y_train.npz'))['arr_0']
+        X_test = np.load(os.path.join('ref', 'X_test.npz'))['arr_0']
         
         print(f"  X_train shape: {X_train.shape}")
         print(f"  y_train shape: {y_train.shape}")
@@ -81,8 +81,8 @@ def test_prediction_shape():
     """Test that prediction output has correct shape."""
     print("\nTesting prediction shape...")
     try:
-        X_test = np.load(os.path.join(os.getcwd(), 'ref', 'X_test.npz'))['arr_0']
-        y_train = np.load(os.path.join(os.getcwd(), 'ref', 'y_train.npz'))['arr_0']
+        X_test = np.load(os.path.join('ref', 'X_test.npz'))['arr_0']
+        y_train = np.load(os.path.join('ref', 'y_train.npz'))['arr_0']
         
         y_pred = np.zeros((len(X_test), y_train.shape[1], y_train.shape[2], 1))
         
