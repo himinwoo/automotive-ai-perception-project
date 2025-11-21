@@ -8,10 +8,20 @@ This project implements a lane detection system using TensorFlow for automotive 
 
 ## 요구사항
 
-- Python 3.11.9 (또는 호환 버전)
+### 원본 노트북 환경
+- Python 3.11.9
 - numpy 1.26.4
 - tensorflow 2.15.0
 - jupyter notebook
+
+### 호환 가능한 환경
+이 저장소의 `requirements.txt`는 더 넓은 Python 버전과 호환됩니다:
+- Python 3.8 - 3.12
+- numpy >= 1.26.4
+- tensorflow >= 2.16.0
+- jupyter notebook
+
+**참고**: TensorFlow 2.15.0은 Python 3.11까지만 지원합니다. Python 3.12를 사용하는 경우 TensorFlow 2.16.0 이상이 필요합니다.
 
 ## 설치 방법
 
@@ -50,6 +60,39 @@ pip install -r requirements.txt
 
 ## 실행 방법
 
+### 빠른 시작 (자동 설정)
+
+```bash
+# 전체 환경을 자동으로 설정
+./setup.sh
+```
+
+### 테스트용 샘플 데이터 생성
+
+실제 데이터가 없는 경우, 테스트용 샘플 데이터를 생성할 수 있습니다:
+
+```bash
+python create_sample_data.py
+```
+
+⚠️ **주의**: 샘플 데이터는 실제 훈련 데이터가 아니므로 의미 있는 결과를 생성하지 않습니다.
+
+### 환경 테스트
+
+노트북 실행 전에 모든 전제 조건이 충족되는지 확인:
+
+```bash
+python test_notebook.py
+```
+
+### 빠른 실행 테스트
+
+전체 노트북을 실행하기 전에 2 에포크로 빠른 테스트:
+
+```bash
+python quick_test.py
+```
+
 ### Jupyter Notebook 실행
 
 ```bash
@@ -75,16 +118,27 @@ jupyter nbconvert --to notebook --execute train_example.ipynb
 
 ```
 .
-├── train_example.ipynb   # 메인 훈련 노트북
+├── train_example.ipynb        # 메인 훈련 노트북
 ├── ref/
-│   ├── f1score.py        # F1 Score 계산 함수
-│   ├── X_train.npz       # 훈련 데이터 (필요)
-│   ├── y_train.npz       # 훈련 라벨 (필요)
-│   └── X_test.npz        # 테스트 데이터 (필요)
-├── submission/           # 제출 파일 저장 디렉토리
-├── requirements.txt      # Python 패키지 의존성
-└── README.md            # 본 파일
+│   ├── f1score.py            # F1 Score 계산 함수
+│   ├── X_train.npz           # 훈련 데이터 (필요)
+│   ├── y_train.npz           # 훈련 라벨 (필요)
+│   └── X_test.npz            # 테스트 데이터 (필요)
+├── submission/               # 제출 파일 저장 디렉토리
+├── requirements.txt          # Python 패키지 의존성
+├── setup.sh                  # 자동 환경 설정 스크립트
+├── create_sample_data.py     # 테스트용 샘플 데이터 생성 스크립트
+├── test_notebook.py          # 전제 조건 검증 스크립트
+├── quick_test.py             # 빠른 실행 테스트 스크립트
+└── README.md                 # 본 파일
 ```
+
+### 헬퍼 스크립트 설명
+
+- **setup.sh**: 가상환경 생성, 패키지 설치, 데이터 파일 확인을 자동으로 수행
+- **create_sample_data.py**: 실제 데이터 없이 노트북 실행을 테스트하기 위한 더미 데이터 생성
+- **test_notebook.py**: 모든 필요한 모듈, 데이터, 모델이 올바르게 작동하는지 검증
+- **quick_test.py**: 전체 훈련 파이프라인을 2 에포크로 빠르게 테스트
 
 ## 모델 설명
 
